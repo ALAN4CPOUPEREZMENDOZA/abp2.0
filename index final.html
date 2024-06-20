@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto ABP</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Asegúrate de que el nombre del archivo CSS sea correcto -->
+    <style>
+        /* Fondo animado */
+        body {
+            background: linear-gradient(-45deg, #007bff, #00bfff, #007bff, #00bfff);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            border-radius: 10px; /* Bordes redondeados */
+        }
+
+        h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Sección de donaciones */
+        #donaciones {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        #donaciones .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #donaciones form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        #donaciones .form-group {
+            margin-bottom: 20px;
+        }
+
+        #donaciones label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        #donaciones input[type="text"],
+        #donaciones input[type="email"],
+        #donaciones select,
+        #donaciones textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #donaciones textarea {
+            resize: vertical;
+        }
+
+        #donaciones .btn-donar {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #donaciones .btn-donar:hover {
+            background-color: #0056b3;
+        }
+
+        #mensaje-agradecimiento {
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+
+        /* Sección de agradecimiento */
+        #agradecimiento {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        #agradecimiento .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #agradecimiento h2 {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #agradecimiento p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        #agradecimiento ul {
+            list-style-type: none;
+            padding: 0;
+            font-size: 18px;
+            color: #666;
+        }
+
+        #agradecimiento ul li {
+            margin-bottom: 10px;
+        }
+
+        #btn-inicio {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #btn-inicio:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenido de tu sitio web -->
+
+    <!-- Sección de Donaciones -->
+    <section id="donaciones">
+        <div class="container">
+            <h2>Donaciones para la Caridad</h2>
+            <form id="formulario-donaciones">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="tipo_donacion">Tipo de Donación:</label>
+                    <select id="tipo_donacion" name="tipo_donacion" required>
+                        <option value="">Seleccione el tipo de donación</option>
+                        <option value="Dinero">Dinero</option>
+                        <option value="Alimentos">Alimentos</option>
+                        <option value="Ropa">Ropa</option>
+                        <option value="Juguetes">Juguetes</option>
+                        <option value="Otros">Otros</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje de Donación:</label>
+                    <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn-donar">Donar</button>
+            </form>
+            <div id="mensaje-agradecimiento" style="display: none;">
+                <p>¡Gracias por tu generosidad! Tu donación ha sido recibida.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Agradecimiento -->
+    <section id="agradecimiento" style="display: none;">
+        <div class="container">
+            <h2>¡Gracias por tu pedido!</h2>
+            <p>Tu solicitud ha sido recibida con éxito. A continuación, se muestran los artículos que seleccionaste:</p>
+            <ul id="lista-seleccionados"></ul>
+            <button id="btn-inicio" class="btn-inicio">Volver al Inicio</button>
+        </div>
+    </section>
+
+    <!-- Otros apartados de tu sitio web -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const formularioDonaciones = document.getElementById('formulario-donaciones');
+            const mensajeAgradecimiento = document.getElementById('mensaje-agradecimiento');
+
+            formularioDonaciones.addEventListener('submit', function(event) {
+                event.preventDefault(); // Evita que se envíe el formulario por defecto
+
+                // Aquí podrías enviar los datos del formulario a tu backend (por ejemplo, con fetch o axios)
+
+                // Mostrar mensaje de agradecimiento y limpiar el formulario
+                mensajeAgradecimiento.style.display = 'block';
+                formularioDonaciones.reset();
+
+                // Opcional: podrías agregar aquí una función para enviar los datos del formulario al servidor
+            });
+
+            const btnSeleccionadoAlimentos = document.querySelector('.btn-seleccionado-alimentos');
+            const btnSeleccionadoMedicinas = document.querySelector('.btn-seleccionado-medicinas');
+            const seccionAgradecimiento = document.getElementById('agradecimiento');
+            const listaSeleccionados = document.getElementById('lista-seleccionados');
+            const btnInicio = document.getElementById('btn-inicio');
+
+            function mostrarAgradecimiento(selecciones) {
+                listaSeleccionados.innerHTML = '';
+                selecciones.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    listaSeleccionados.appendChild(li);
+                });
+
+                seccionAgradecimiento.style.display = 'block';
+            }
+
+            btnSeleccionadoAlimentos?.addEventListener('click', function() {
+                const seleccionados = Array.from(document.querySelectorAll('.galeria-alimentos .item-seleccionado')).map(item => item.textContent);
+                mostrarAgradecimiento(seleccionados);
+            });
+
+            btnSeleccionadoMedicinas?.addEventListener('click', function() {
+                const seleccionados = Array.from(document.querySelectorAll('.galeria-medicinas .item-seleccionado')).map(item => item.textContent);
+                mostrarAgradecimiento(seleccionados);
+            });
+
+            btnInicio.addEventListener('click', function() {
+                seccionAgradecimiento.style.display = 'none';
+                // Aquí puedes agregar lógica para redirigir al inicio, si es necesario
+                // Por ejemplo: window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>
